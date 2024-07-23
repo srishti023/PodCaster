@@ -77,7 +77,8 @@ router.post("/sign-in", async(req,res) => {
                 message:"Sign-in successfully",
             });
     }catch(error){
-        // res.status(500).json({error});
+        console.log(error);
+        res.status(500).json({error: error});
     }
 });
 
@@ -98,5 +99,21 @@ router.get("/chec-cookie",async(req,res) => {
     res.status(200).json({message : false});
 });
 
+//ROUTE TO FETCH USER DETAILS
+router.get("/user-details", authMiddleware ,async(req,res) => {
+    try{
+        const {email} = req.user;
+        const existingUser = await User.findOne({email:email}).select(
+            "-password"
+        );
+        return res.status(200).json({
+            user :existingUser,
+        });
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({error: error});
+    }
+});
 
 module.exports = router;
