@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const authMiddleware = require("../middleware/authMiddleware")
 //signup - route
 router.post("/sign-up", async (req,res) => {
     try{
@@ -100,7 +101,7 @@ router.get("/chec-cookie",async(req,res) => {
 });
 
 //ROUTE TO FETCH USER DETAILS
-router.get("/user-details", authMiddleware ,async(req,res) => {
+router.get("/user-details",authMiddleware ,async(req,res) => {
     try{
         const {email} = req.user;
         const existingUser = await User.findOne({email:email}).select(
