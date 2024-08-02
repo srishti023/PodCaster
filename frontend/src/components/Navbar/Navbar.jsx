@@ -40,8 +40,8 @@ const Navbar = () => {
             ))}
         </div>
         <div className='hidden w-2/6 lg:flex items-center justify-end'>
-                <Link className='px-6 py-3 border-black rounded-full'>Login</Link>
-                <Link className='px-6 py-3 bg-black text-white rounded-full ms-4'>Signup</Link>
+                <Link to = "/login" className='px-6 py-3 border-black rounded-full'>Login</Link>
+                <Link to = "/signup" className='px-6 py-3 bg-black text-white rounded-full ms-4'>Signup</Link>
         </div>
         <div className='w-4/6 flex items-center justify-end lg:hidden z-50'>
             <button className={`text-4xl ${MobileNav ? "rotate-360" : "rotate-180"} transition-all duration-300`} onClick={()=>setMobileNav(!MobileNav)}>
@@ -62,7 +62,7 @@ const Navbar = () => {
             <Link to="/login" className="mb-12 text-2xl hover:font-semibold transition-all duration-300" onClick={closeMobileNav}>
                 Login
             </Link>
-            <Link to="/signup" className="mb-12 text-2xl hover:font-semibold transition-all duration-300">
+            <Link to = "/signup" className="mb-12 text-2xl hover:font-semibold transition-all duration-300">
                 Signup
             </Link>
         </div>
