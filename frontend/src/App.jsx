@@ -6,6 +6,7 @@ import AuthLayout from "./layout/AuthLayout";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Categories from './pages/categories';
+import Profile from './pages/profile';
 const App = () => {
   return (
     <div className=''>
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/" element = {<MainLayout/>}>
             <Route index element={<Home/>}/>
             <Route path='/categories'element={<Categories/>}/>
+            <Route path='/profile'element={<Profile/>}/>
           </Route>
           <Route path="/" element = {<AuthLayout/>}>
             <Route path='/signup' element={<Signup/>}/>

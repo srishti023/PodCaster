@@ -3,9 +3,11 @@ import {Link, useNavigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import axios from "axios";
-
+import { useDispatch } from 'react-redux';
+import { authActions } from "../store/auth"
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [Values, setValues] = useState({
     email:"",
@@ -18,7 +20,14 @@ const Login = () => {
   const handleSubmit = async() => {
     try
     {
-      const res = await axios.post("http://localhost:1000/api/v1/sign-in",Values,{withCredentials:true});
+      const res = await axios.post(
+        "http://localhost:1000/api/v1/sign-in",
+        Values,
+        {
+          withCredentials:true,
+        }
+      );
+      dispatch(authActions.login());
       console.log(res.data)
       navigate("/profile");
     }
@@ -26,7 +35,7 @@ const Login = () => {
     {
       toast.error(error.response?.data?.message || 'An error occurred!');
     }
-  }
+  };
     return (
         <div className='h-screen bg-green-100 flex items-center justify-center'>
           <ToastContainer position="top-center" draggable/>
