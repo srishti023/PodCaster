@@ -55,7 +55,7 @@ const Navbar = () => {
             </>
             )}
             {isLoggedIn && <Link 
-            to = "/signup" 
+            to = "/profile" 
             className='px-6 py-3 bg-black text-white rounded-full ms-4'
             >
                 Profile
