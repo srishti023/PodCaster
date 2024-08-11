@@ -55,19 +55,20 @@ const InputPodcast = () => {
         data.append("frontImage", frontImage)
         data.append("audioFile", audioFile);
         try {
-            const res = await axios.post("http://localhost:1000/api/v1/add-podcast", 
+            const res = await axios.post(
+                "http://localhost:1000/api/v1/add-podcast", 
             data, 
             {
                 headers:{
                     "Content-Type" : "multipart/form-data",
                 },
-                withCredentials:true
+                withCredentials:true,
             }
             );
             console.log(res);
         } catch (error) {
             console.log(error);
-        };
+        }
   
     };
 
