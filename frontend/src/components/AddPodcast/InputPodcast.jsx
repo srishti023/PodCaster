@@ -57,7 +57,7 @@ const InputPodcast = () => {
         try {
             const res = await axios.post(
                 "http://localhost:1000/api/v1/add-podcast", 
-            data, 
+            data,
             {
                 headers:{
                     "Content-Type" : "multipart/form-data",
