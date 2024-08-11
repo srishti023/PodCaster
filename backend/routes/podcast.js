@@ -2,7 +2,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 const upload = require("../middleware/multer");
 const Category = require("../models/category");
 const User = require("../models/user"); 
-const podcast = require("../models/podcast");
+const Podcast = require("../models/podcast");
 const router = require("express").Router();
 //add-podcast
 router.post("/add-podcast",authMiddleware, upload, async (req,res) => {
@@ -15,14 +15,14 @@ router.post("/add-podcast",authMiddleware, upload, async (req,res) => {
             return res.status(400).json({message:"All fields are required"});
         }
         const {user} = req;
-        const cat = await category.findOne({categoryName : category});
+        const cat = await Category.findOne({categoryName : category});
         if(!cat)
         {
             return res.status(400).json({message : "No category found"});
         }
         const catid = cat._id;
         const userid = user._id;
-        const newPodcast = new podcast({
+        const newPodcast = new Podcast({
             title,
             description,
             category:catid,
@@ -32,7 +32,7 @@ router.post("/add-podcast",authMiddleware, upload, async (req,res) => {
         });
         await newPodcast.save();
         await category.findByIdAndUpdate(catid,{
-        $push:{podcast:newPodcast._id},
+        $push:{podcasts:newPodcast._id},
     });
     await user.findByIdAndUpdate(userid,{$push:{podcasts : newPodcast._id}});
     res.status(201).json({message:"Podcast added Successfully"});
@@ -44,7 +44,7 @@ router.post("/add-podcast",authMiddleware, upload, async (req,res) => {
 //get all postcast
 router.get("./get-podcasts", async(req,res) => {
     try{
-        const podcasts = await podcast.find()
+        const podcasts = await Podcast.find()
         .populate("category")
         .sort({createdAt: -1});
         return res.status(200).json({data : podcasts});
@@ -78,19 +78,20 @@ router.get("./get-user-podcasts", authMiddleware, async(req,res) => {
 router.get("./get-podcast/:id", async(req,res) => {
     try{
         const {id} = req.params;
-        const podcasts = await podcast.findById(id).populate("category");
+        const podcasts = await Podcast.findById(id).populate("category");
         return res.status(200).json({data : podcasts});
     }catch(error){
         return res.status(500).json({message:"Internal server error"});
     }
 });
 
-//git podcast by categories
+//get podcast by categories
 router.get("/category/:cat", async(req,res) => {
     try{
         const {cat} = req.params;
-        const categories = await Category.findById({categoryName:cat}).populate({
-            path:"podcasts", populate:{path:"category"}
+        const categories = await Category.find({categoryName:cat}).populate({
+            path:"podcasts", 
+            populate:{path:"category"},
         });
         let podcasts = [];
         categories.forEach((category)=>{
