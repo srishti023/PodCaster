@@ -31,7 +31,7 @@ router.post("/add-podcast",authMiddleware, upload, async (req,res) => {
             user:userid,
         });
         await newPodcast.save();
-        await category.findByIdAndUpdate(catid,{
+        await Category.findByIdAndUpdate(catid,{
         $push:{podcasts:newPodcast._id},
     });
     await user.findByIdAndUpdate(userid,{$push:{podcasts : newPodcast._id}});
