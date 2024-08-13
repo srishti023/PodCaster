@@ -59,7 +59,7 @@ const InputPodcast = () => {
                 "http://localhost:1000/api/v1/add-podcast", 
             data,
             {
-                headers:{
+                header:{
                     "Content-Type" : "multipart/form-data",
                 },
                 withCredentials:true,

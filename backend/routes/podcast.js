@@ -34,7 +34,7 @@ router.post("/add-podcast",authMiddleware, upload, async (req,res) => {
         await Category.findByIdAndUpdate(catid,{
         $push:{podcasts:newPodcast._id},
     });
-    await user.findByIdAndUpdate(userid,{$push:{podcasts : newPodcast._id}});
+    await User.findByIdAndUpdate(userid,{$push:{podcasts : newPodcast._id}});
     res.status(201).json({message:"Podcast added Successfully"});
     }catch(error){
         return res.status(500).json({message:"Failed to add podcast"});
