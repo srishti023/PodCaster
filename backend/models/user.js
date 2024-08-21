@@ -19,7 +19,7 @@ const user = new mongoose.Schema({
     podcasts : [
         {
             type:mongoose.Types.ObjectId,
-            ref:"podcast",
+            ref:"podcasts",
         },
     ],
 },

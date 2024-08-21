@@ -4,6 +4,7 @@ const Category = require("../models/category");
 const User = require("../models/user"); 
 const Podcast = require("../models/podcast");
 const router = require("express").Router();
+
 //add-podcast
 router.post("/add-podcast",authMiddleware, upload, async (req,res) => {
     try{
@@ -42,7 +43,7 @@ router.post("/add-podcast",authMiddleware, upload, async (req,res) => {
 });
 
 //get all postcast
-router.get("./get-podcasts", async(req,res) => {
+router.get("/get-podcasts", async(req,res) => {
     try{
         const podcasts = await Podcast.find()
         .populate("category")
@@ -54,7 +55,7 @@ router.get("./get-podcasts", async(req,res) => {
 });
 
 //get-user-podcasts
-router.get("./get-user-podcasts", authMiddleware, async(req,res) => {
+router.get("/get-user-podcasts", authMiddleware, async(req,res) => {
     try{
         const {user} =req;
         const userid = user._id;
@@ -75,7 +76,7 @@ router.get("./get-user-podcasts", authMiddleware, async(req,res) => {
 });
 
 //get podcast by id
-router.get("./get-podcast/:id", async(req,res) => {
+router.get("/get-podcast/:id", async(req,res) => {
     try{
         const {id} = req.params;
         const podcasts = await Podcast.findById(id).populate("category");

@@ -30,7 +30,6 @@ const Login = () => {
         }
       );
       dispatch(authActions.login());
-      console.log(res.data)
       navigate("/profile");
     }
     catch(error)

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {toast, ToastContainer} from "react-toastify";
 
 const InputPodcast = () => {
     const [frontImage, setFrontImage] = useState(null);
@@ -56,24 +57,34 @@ const InputPodcast = () => {
         data.append("audioFile", audioFile);
         try {
             const res = await axios.post(
-                "http://localhost:1000/api/v1/add-podcast", 
-            data,
-            {
-                header:{
-                    "Content-Type" : "multipart/form-data",
-                },
-                withCredentials:true,
-            }
+                "http://localhost:1000/api/v1/add-podcast",
+                data,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                    withCredentials: true,
+                }
             );
-            console.log(res);
+            toast.success(res.data.message);
         } catch (error) {
-            console.log(error);
+            toast.error(error.response.data.message);
+        }
+        finally{
+            setInputs({
+                title: "",
+                description: "",
+                category: "",
+            });
+            setFrontImage(null);
+            setaudioFile(null);
         }
   
     };
 
     return (
         <div className='my-10 mb-10 px-4 lg:px-12'>
+            <ToastContainer position="top-center" draggable/>
             <h1 className='text-2xl font-semibold flex item-center justify-center'>Create Your Podcast</h1>
             <div className='mt-5 flex flex-col lg:flex-row justify-between gap-4'>
                 <div className='w-full lg:w-2/6 flex justify-center lg:justify-start'>
@@ -144,6 +155,7 @@ const InputPodcast = () => {
                                 type="file"
                                 accept=".mp3, .wav, .m4a, .ogg"
                                 id='audioFile'
+                                name="audioFile"
                                 className='mt-4'
                                 onChange = {handleAudioFile}
                             />
