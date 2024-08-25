@@ -9,6 +9,7 @@ import Categories from './pages/categories';
 import Profile from './pages/profile';
 import AddPodcast from './pages/AddPodcast';
 import AllPodcasts from './pages/AllPodcasts';
+import CategoriesPage from './pages/CategoriesPage';
 import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { authActions } from './store/auth';
@@ -41,6 +42,7 @@ const App = () => {
             <Route path='/profile'element={<Profile/>}/>
             <Route path='/add-podcast'element={<AddPodcast/>}/>
             <Route path='/all-podcasts'element={<AllPodcasts/>}/>
+            <Route path='/categories/:cat'element={<CategoriesPage/>}/>
           </Route>
           <Route path="/" element = {<AuthLayout/>}>
             <Route path='/signup' element={<Signup/>}/>
