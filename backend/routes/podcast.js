@@ -42,7 +42,7 @@ router.post("/add-podcast",authMiddleware, upload, async (req,res) => {
     }
 });
 
-//get all postcast
+//get all podcast
 router.get("/get-podcasts", async(req,res) => {
     try{
         const podcasts = await Podcast.find()
@@ -90,14 +90,14 @@ router.get("/get-podcast/:id", async(req,res) => {
 router.get("/category/:cat", async(req,res) => {
     try{
         const {cat} = req.params;
-        const categories = await Category.find({categoryName:cat}).populate({
+         const categories = await Category.find({categoryName:cat}).populate({
             path:"podcasts", 
             populate:{path:"category"},
         });
         let podcasts = [];
         categories.forEach((category)=>{
             podcasts = [...podcasts,...category.podcasts];
-        })
+        });
         return res.status(200).json({data : podcasts});
     }catch(error){
         return res.status(500).json({message:"Internal server error"});

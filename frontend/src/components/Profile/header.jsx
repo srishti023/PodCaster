@@ -25,7 +25,7 @@ const header = () => {
     };
   return (
     <>
-    {UserData && (<div className='bg-green-900 rounded py-8 flex flex-col md:flex-row items-center justify-center gap-4 md:justify-between px-4 lg:px-12'>
+    {UserData && (<div className='bg-slate-800 rounded py-8 flex flex-col md:flex-row items-center justify-center gap-4 md:justify-between px-4 lg:px-12'>
     <div className='flex flex-col items-center md:items-start'>
       <p className='text-zinc-300'>Profile</p>
       <h1 className='text-3xl md:text-4 lg:text-5xl text-zinc-100 font-bold text-center'>

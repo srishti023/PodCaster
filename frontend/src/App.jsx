@@ -42,7 +42,7 @@ const App = () => {
             <Route path='/profile'element={<Profile/>}/>
             <Route path='/add-podcast'element={<AddPodcast/>}/>
             <Route path='/all-podcasts'element={<AllPodcasts/>}/>
-            <Route path='/categories/:cat'element={<CategoriesPage/>}/>
+            <Route path='/categories/:cat' element={<CategoriesPage/>}/>
           </Route>
           <Route path="/" element = {<AuthLayout/>}>
             <Route path='/signup' element={<Signup/>}/>

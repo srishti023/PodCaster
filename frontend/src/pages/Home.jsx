@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => {
   return(
-  <div className='bg-green-100 px-12 h-screen lg:h-[90vh] flex flex-col items-center justify-center'>
+  <div className='bg-slate-300 px-12 h-screen lg:h-[93vh] flex flex-col items-center justify-center'>
     <div className='w-full flex items-center justify-between gap-4'>
       <div className='w-full lg:w-5/6'>
         <h1 className='text-4xl md:text-6xl lg:text-8xl font-bold text-center lg:text-start'>
@@ -30,7 +30,7 @@ const Home = () => {
           Listen to the most popular podcasts on just one platform - 
           <b> PODCASTER</b>
         </p>
-        <button className='px-6 py-4 bg-green-900 text-white font-semibold rounded-full mt-6 lg:mt-8'>
+        <button className='px-6 py-4 bg-slate-800 text-white font-semibold rounded-full mt-6 lg:mt-8'>
           Login to listen
         </button>
       </div>

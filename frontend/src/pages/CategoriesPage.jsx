@@ -1,7 +1,7 @@
 import React,{ useState, useEffect} from 'react'
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import PodcastCard from '../components/PodcastCard/PodcastCard';
+import PodcastCard from "../components/PodcastCard/PodcastCard";
 const CategoriesPage = () => {
   const { cat } = useParams();
   const [Podcasts, setPodcasts] = useState();
@@ -31,4 +31,4 @@ const CategoriesPage = () => {
 
 };
 
-export default CategoriesPage
+export default CategoriesPage;  

@@ -143,7 +143,7 @@ const InputPodcast = () => {
                             name='description'
                             placeholder='Description for your Podcast'
                             className='mt-4 px-4 py-2 outline-none border border-zinc-800 rounded'
-                            rows={4}
+                            rows={10}
                             value={Inputs.description}
                             onChange={onChangeInputs}
                         />
