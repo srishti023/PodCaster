@@ -169,12 +169,12 @@ const InputPodcast = () => {
                                 value={Inputs.category}
                                 onChange={onChangeInputs}
                             >
-                                <option value="">Select Category</option>
+                                {/* <option value="">Select Category</option>
                                 <option value="Comedy">Comedy</option>
-                                <option value="Business">Business</option>
+                                <option value="Business">Business</option> */}
                                 <option value="Education">Education</option>
-                                <option value="Hobbies">Hobbies</option>
-                                <option value="Government">Government</option>
+                                {/* <option value="Hobbies">Hobbies</option>
+                                <option value="Government">Government</option> */}
                             </select>
                         </div>
                     </div>

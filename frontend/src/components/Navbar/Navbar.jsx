@@ -92,8 +92,9 @@ const Navbar = () => {
                 Signup
             </Link></> : <Link 
             to = "/profile" 
-            className="mb-12 text-2xl hover:font-semibold transition-all duration-300">
+            className="mb-12 text-2xl hover:font-semibold transition-all duration-300"
             onClick={closeMobileNav}
+            >
                 Profile
             </Link>}
             
