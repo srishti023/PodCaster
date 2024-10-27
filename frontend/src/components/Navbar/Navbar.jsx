@@ -77,12 +77,26 @@ const Navbar = () => {
                     {items.name}
                 </Link>
             ))}
-            <Link to="/login" className="mb-12 text-2xl hover:font-semibold transition-all duration-300" onClick={closeMobileNav}>
+            {!isLoggedIn ? <><Link 
+            to="/login" 
+            className="mb-12 text-2xl hover:font-semibold transition-all duration-300" 
+            onClick={closeMobileNav}
+            >
                 Login
             </Link>
-            <Link to = "/signup" className="mb-12 text-2xl hover:font-semibold transition-all duration-300">
+            <Link 
+            to = "/signup" 
+            className="mb-12 text-2xl hover:font-semibold transition-all duration-300"
+            onClick={closeMobileNav}
+            >
                 Signup
-            </Link>
+            </Link></> : <Link 
+            to = "/profile" 
+            className="mb-12 text-2xl hover:font-semibold transition-all duration-300">
+            onClick={closeMobileNav}
+                Profile
+            </Link>}
+            
         </div>
     </div>
   </nav>

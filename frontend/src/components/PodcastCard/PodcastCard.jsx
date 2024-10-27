@@ -1,9 +1,23 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { playerActions } from '../../store/player';
 const PodcastCard = ({items}) => {
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
+  const handlePlay = (e) => {
+    if(isLoggedIn)
+    {
+      e.preventDefault();
+      dispatch(playerActions.setDiv());
+      dispatch(
+        playerActions.changeImage(`http://localhost:1000/${items.frontImage}`)
+      );
+      dispatch(
+        playerActions.changeSong(`http://localhost:1000/${items.audioFile}`)
+      );
+    }
+  }
   return (
     <div>
       <Link
@@ -25,6 +39,7 @@ const PodcastCard = ({items}) => {
             <Link 
             to={isLoggedIn ? "#" : "/signup"}
             className='bg-slate-800 text-white px-4 py-2 rounded mt-2 flex items-center justify-center hover:bg-slate-700 transition-all duration-300'
+            onClick={handlePlay}
             >
               Play Now
             </Link>
